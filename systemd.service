@@ -10,4 +10,4 @@ ExecStart=npm start
 Restart=on-failure
 SyslogIdentifier=frontend
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.targe
