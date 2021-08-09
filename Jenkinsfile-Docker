@@ -1,4 +1,4 @@
-@Library('todo') _
+@Library('todoshop') _
 
 docker (
         COMPONENT             : 'frontend',
