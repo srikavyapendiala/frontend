@@ -1,0 +1,39 @@
+pipeline {
+  agent any
+
+  triggers {
+    pollSCM('H/2 * * * *')
+  }
+
+
+  stages {
+
+    stage('Main-Branch') {
+      steps {
+        script {
+          addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "${GIT_BRANCH}"
+        }
+        print "Hello"
+        sh 'env'
+      }
+    }
+
+    stage('Main+Tag') {
+      when { expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
+      steps {
+        script {
+          addShortText background: 'yellow', color: 'black', borderColor: 'yellow', text: "${GIT_BRANCH}"
+        }
+        print "Two"
+      }
+    }
+
+  }
+
+  post {
+    always {
+      cleanWs()
+    }
+  }
+
+}
