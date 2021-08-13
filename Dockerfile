@@ -7,4 +7,4 @@ RUN     npm run build
 FROM    nginx
 RUN     mkdir -p /var/www/html/frontend
 COPY   --from=builder /frontend /var/www/html/frontend
-COPY    todo-docker.conf /etc/nginx/conf.d/default.conf
+COPY    todoshop-docker.conf /etc/nginx/conf.d/default.conf
